@@ -1,70 +1,73 @@
+import Link from "next/link";
+import Image from "next/image";
+
 const menuItems = [
   {
-    title: "MENU",
+    title: "Үндсэн цэс",
     items: [
       {
         icon: "/home.png",
-        label: "Home",
+        label: "Нүүр хуудас",
         href: "/",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
         icon: "/teacher.png",
-        label: "Teachers",
+        label: "Багш нарт",
         href: "/list/teachers",
         visible: ["admin", "teacher"],
       },
       {
         icon: "/student.png",
-        label: "Students",
+        label: "Сурагчид",
         href: "/list/students",
         visible: ["admin", "teacher"],
       },
       {
         icon: "/parent.png",
-        label: "Parents",
+        label: "Эцэг Эх",
         href: "/list/parents",
         visible: ["admin", "teacher"],
       },
       {
         icon: "/subject.png",
-        label: "Subjects",
+        label: "Сургалтын хөтөлбөр",
         href: "/list/subjects",
         visible: ["admin"],
       },
       {
         icon: "/class.png",
-        label: "Classes",
+        label: "Анги",
         href: "/list/classes",
         visible: ["admin", "teacher"],
       },
       {
         icon: "/lesson.png",
-        label: "Lessons",
+        label: "Хичээл",
         href: "/list/lessons",
         visible: ["admin", "teacher"],
       },
       {
         icon: "/exam.png",
-        label: "Exams",
+        label: "Шалгалт",
         href: "/list/exams",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
         icon: "/assignment.png",
-        label: "Assignments",
+        label: "Даалгавар",
         href: "/list/assignments",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
         icon: "/result.png",
-        label: "Results",
+        label: "Дүн",
         href: "/list/results",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
         icon: "/attendance.png",
-        label: "Attendance",
+        label: "Ирц",
         href: "/list/attendance",
         visible: ["admin", "teacher", "student", "parent"],
       },
@@ -76,39 +79,55 @@ const menuItems = [
       },
       {
         icon: "/message.png",
-        label: "Messages",
+        label: "Захидал",
         href: "/list/messages",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
         icon: "/announcement.png",
-        label: "Announcements",
+        label: "Зарлал",
         href: "/list/announcements",
         visible: ["admin", "teacher", "student", "parent"],
       },
     ],
   },
   {
-    title: "OTHER",
+    title: "БУСАД",
     items: [
       {
         icon: "/profile.png",
-        label: "Profile",
+        label: "Профайл",
         href: "/profile",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
         icon: "/setting.png",
-        label: "Settings",
+        label: "Тохиргоо",
         href: "/settings",
         visible: ["admin", "teacher", "student", "parent"],
       },
       {
         icon: "/logout.png",
-        label: "Logout",
+        label: "Гарах",
         href: "/logout",
         visible: ["admin", "teacher", "student", "parent"],
       },
     ],
   },
 ];
+const Menu = () => {
+  return (
+    <div className='mt-4 text-sm'>{
+      menuItems.map(i=>(<div className="flex flex-col gap-2" key={i.title}>
+        <span className="hidden lg:block text-gray-400 font-light my-4">{i.title}</span>
+        {i.items.map(item=>(<Link href={item.href} key={item.label} className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2">
+        <Image src={item.icon} alt="" width={20} height={20}/>
+        <span className="hidden lg:block">{item.label}</span>
+        </Link>))}
+      </div>
+      ))
+    }</div>
+  )
+}
+
+export default Menu
