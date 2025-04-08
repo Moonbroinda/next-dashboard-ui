@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Хөгжлийн цахим галт жигүүр  ",
-  description: "Next.js School Management System",
+  description: "Хөгжлийн цахим галт жигүүр ХХК дотоод менежментийн систем",
 };
 
 export default function RootLayout({
